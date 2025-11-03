@@ -1,126 +1,27 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { Outlet, Route, Routes } from "react-router";
 import "./App.css";
-import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Toaster } from "@/components/ui/sonner";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
-import { toast } from "sonner";
-import { ChefHat } from "lucide-react";
+import IndexPage from "@/pages/index-page";
+import SignInpage from "@/pages/sign-in-page";
+import SignUppage from "@/pages/sign-up-page";
+function AuthLayout() {
+  return (
+    <div>
+      <header>Auth!</header>
+      <Outlet />
+    </div>
+  );
+}
 
 function App() {
-  const isActive = true;
   return (
-    <div className="p-5">
-      <ChefHat className="h-10 w-10 fill-red-500" />
-      <AlertDialog>
-        <AlertDialogTrigger>Open Alert</AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogTitle>Title</AlertDialogTitle>
-          <AlertDialogDescription>Description</AlertDialogDescription>
-          <div>body</div>
-          <div>
-            <AlertDialogAction
-              onClick={() => {
-                console.log("Action");
-              }}
-            >
-              Action
-            </AlertDialogAction>
-            <AlertDialogCancel
-              onClick={() => {
-                console.log("Cencel");
-              }}
-            >
-              Cancel
-            </AlertDialogCancel>
-          </div>
-        </AlertDialogContent>
-      </AlertDialog>
+    <Routes>
+      <Route path="/" element={<IndexPage />} />
 
-      <Dialog>
-        <DialogTrigger>open dialog</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Title</DialogTitle>
-            <DialogDescription>Description</DialogDescription>
-          </DialogHeader>
-          <div>body</div>
-        </DialogContent>
-      </Dialog>
-
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button>버튼</Button>
-        </PopoverTrigger>
-        <PopoverContent>contents</PopoverContent>
-      </Popover>
-
-      <Carousel className="mx-10">
-        <CarouselContent>
-          <CarouselItem className="basis-1/3">1</CarouselItem>
-          <CarouselItem className="basis-1/3">2</CarouselItem>
-          <CarouselItem className="basis-1/3">3</CarouselItem>
-          <CarouselItem className="basis-1/3">4</CarouselItem>
-          <CarouselItem className="basis-1/3">5</CarouselItem>
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-
-      <Toaster />
-
-      <Textarea />
-
-      <Input placeholder="입력..." />
-
-      <Button
-        onClick={() => {
-          toast("토스트메세지", { position: "top-center" });
-        }}
-      >
-        버튼
-      </Button>
-      <Button variant={"destructive"}>버튼</Button>
-      <Button variant={"ghost"}>버튼</Button>
-      <Button variant={"link"}>버튼</Button>
-      <Button variant={"outline"}>버튼</Button>
-      <Button variant={"secondary"}>버튼</Button>
-      <div className={cn(isActive ? "text-green-500" : "text-red-500")}>
-        isActive
-      </div>
-      <div className="text-primary">primary</div>
-      <div className="text-muted">Muted</div>
-      <div className="text-destructive">destructive</div>
-    </div>
+      <Route element={<AuthLayout />}>
+        <Route path="/sign-in" element={<SignInpage />} />
+        <Route path="/sign-up" element={<SignUppage />} />
+      </Route>
+    </Routes>
   );
 }
 
