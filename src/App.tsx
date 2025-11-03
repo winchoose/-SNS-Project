@@ -3,6 +3,7 @@ import "./App.css";
 import IndexPage from "@/pages/index-page";
 import SignInpage from "@/pages/sign-in-page";
 import SignUppage from "@/pages/sign-up-page";
+import CounterPage from "@/pages/counter-page";
 function AuthLayout() {
   return (
     <div>
@@ -15,6 +16,7 @@ function AuthLayout() {
 function App() {
   return (
     <Routes>
+      <Route path="/counter" element={<CounterPage />} />
       <Route path="/" element={<IndexPage />} />
 
       <Route element={<AuthLayout />}>
