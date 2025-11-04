@@ -1,16 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { useCountStore } from "@/store/count";
+import Controlller from "@/components/counter/controller";
+import Vierwer from "@/components/counter/viewer";
 
 export default function CounterPage() {
-  const { count, increase, decrease } = useCountStore();
   return (
     <div>
       <h1>Counter</h1>
-      <div>{count}</div>
-      <div>
-        <Button onClick={decrease}>-</Button>
-        <Button onClick={increase}>+</Button>
-      </div>
+      <Vierwer />
+      <Controlller />
     </div>
   );
 }
