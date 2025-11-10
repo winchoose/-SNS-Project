@@ -73,6 +73,7 @@ export const useCount = () => {
   const count = useCountStore((store) => store.count);
   return count;
 };
+
 export const useIncreaseCount = () => {
   const increase = useCountStore((store) => store.actions.increase);
   return increase;
