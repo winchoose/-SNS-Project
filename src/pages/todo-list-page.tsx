@@ -1,6 +1,6 @@
 import TodoEditor from "@/components/todo-list/todo-editor";
 import TodoItem from "@/components/todo-list/todo-item";
-import { useTodoData } from "@/hooks/quries/use-todos.data";
+import { useTodoData } from "@/hooks/quries/use-todos-data";
 import { API_URL } from "@/lib/constants";
 import type { Todo } from "@/store/types";
 import { useQuery } from "@tanstack/react-query";
